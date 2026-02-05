@@ -33,11 +33,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Call Extraction
 
-- [ ] **CALL-01**: System automatically detects calls from content using NLP/LLM
-- [ ] **CALL-02**: Calls are classified as bullish or bearish
-- [ ] **CALL-03**: Calls have confidence score (how certain the extraction is)
-- [ ] **CALL-04**: Calls identify the asset/ticker being called (BTC, ETH, NASDAQ, etc.)
-- [ ] **CALL-05**: Calls store timestamp, source link, and quote snippet
+- [x] **CALL-01**: System automatically detects calls from content using NLP/LLM
+- [x] **CALL-02**: Calls are classified as bullish or bearish
+- [x] **CALL-03**: Calls have confidence score (how certain the extraction is)
+- [x] **CALL-04**: Calls identify the asset/ticker being called (BTC, ETH, NASDAQ, etc.)
+- [x] **CALL-05**: Calls store timestamp, source link, and quote snippet
 
 ### Charts & Visualization
 
@@ -52,10 +52,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Price Data
 
-- [ ] **PRCE-01**: Modular price adapter architecture (swap providers without code changes)
-- [ ] **PRCE-02**: CoinGecko adapter for crypto price data
-- [ ] **PRCE-03**: Yahoo Finance adapter for macro price data (NASDAQ, S&P)
-- [ ] **PRCE-04**: Historical price data for chart rendering
+- [x] **PRCE-01**: Modular price adapter architecture (swap providers without code changes)
+- [x] **PRCE-02**: CoinGecko adapter for crypto price data
+- [x] **PRCE-03**: Yahoo Finance adapter for macro price data (NASDAQ, S&P)
+- [x] **PRCE-04**: Historical price data for chart rendering
 
 ## v2 Requirements
 
@@ -114,15 +114,15 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CONT-03 | Phase 2 | Complete |
 | CONT-04 | Phase 2 | Complete |
 | CONT-05 | Phase 2 | Complete |
-| CALL-01 | Phase 3 | Pending |
-| CALL-02 | Phase 3 | Pending |
-| CALL-03 | Phase 3 | Pending |
-| CALL-04 | Phase 3 | Pending |
-| CALL-05 | Phase 3 | Pending |
-| PRCE-01 | Phase 3 | Pending |
-| PRCE-02 | Phase 3 | Pending |
-| PRCE-03 | Phase 3 | Pending |
-| PRCE-04 | Phase 3 | Pending |
+| CALL-01 | Phase 3 | Complete |
+| CALL-02 | Phase 3 | Complete |
+| CALL-03 | Phase 3 | Complete |
+| CALL-04 | Phase 3 | Complete |
+| CALL-05 | Phase 3 | Complete |
+| PRCE-01 | Phase 3 | Complete |
+| PRCE-02 | Phase 3 | Complete |
+| PRCE-03 | Phase 3 | Complete |
+| PRCE-04 | Phase 3 | Complete |
 | CHRT-01 | Phase 4 | Pending |
 | CHRT-02 | Phase 4 | Pending |
 | CHRT-03 | Phase 4 | Pending |
@@ -139,4 +139,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-02-05*
-*Last updated: 2026-02-05 after roadmap creation*
+*Last updated: 2026-02-06 after Phase 3 completion*

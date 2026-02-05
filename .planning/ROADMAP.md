@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation & Authentication** - Rails API, Next.js frontend, user accounts, deployment infrastructure
 - [x] **Phase 2: Influencer & Content Pipeline** - Admin influencer management, YouTube/Twitter ingestion with batch processing
-- [ ] **Phase 3: Call Extraction & Price Data** - NLP-based call extraction from content, modular price data integration
+- [x] **Phase 3: Call Extraction & Price Data** - NLP-based call extraction from content, modular price data integration
 - [ ] **Phase 4: Chart Visualization** - Interactive charts with call overlays, complete user experience
 
 ## Phase Details
@@ -73,10 +73,10 @@ Plans:
 **Plans**: 4 plans
 
 Plans:
-- [ ] 03-01-PLAN.md — Data models (Asset, Call, PriceSnapshot) and asset seed data
-- [ ] 03-02-PLAN.md — LLM call extraction pipeline (ruby-openai, services, jobs)
-- [ ] 03-03-PLAN.md — Price data adapters (CoinGecko, Yahoo Finance) and fetch jobs
-- [ ] 03-04-PLAN.md — API endpoints for calls, assets, and price snapshots
+- [x] 03-01-PLAN.md — Data models (Asset, Call, PriceSnapshot) and asset seed data
+- [x] 03-02-PLAN.md — LLM call extraction pipeline (ruby-openai, services, jobs)
+- [x] 03-03-PLAN.md — Price data adapters (CoinGecko, Yahoo Finance) and fetch jobs
+- [x] 03-04-PLAN.md — API endpoints for calls, assets, and price snapshots
 
 ### Phase 4: Chart Visualization
 **Goal**: Users see interactive price charts with influencer call overlays, completing the core value proposition
@@ -105,7 +105,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Foundation & Authentication | 3/3 | ✓ Complete | 2026-02-05 |
 | 2. Influencer & Content Pipeline | 5/5 | ✓ Complete | 2026-02-06 |
-| 3. Call Extraction & Price Data | 0/4 | In Progress | - |
+| 3. Call Extraction & Price Data | 4/4 | ✓ Complete | 2026-02-06 |
 | 4. Chart Visualization | 0/TBD | Not started | - |
 
 ---
