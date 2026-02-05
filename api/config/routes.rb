@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       resources :influencers do
         resources :youtube_channels, only: [:create, :destroy]
         resources :twitter_accounts, only: [:create, :destroy]
+        resources :contents, only: [:index]
       end
     end
   end
