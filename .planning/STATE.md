@@ -71,6 +71,9 @@ Recent decisions affecting current work:
 - **GPT-4o-mini for extraction** - Cost-effective at $0.15/1M input tokens, sufficient for call extraction
 - **Confidence >= 0.7 threshold** - Only persist high-confidence calls; 0.5-0.7 marked low_confidence
 - **Extraction at :15 past hour** - Staggered after YouTube (:00) and Twitter (:30) ingestion
+- **Adapter pattern for price providers** - BaseAdapter interface with CoingeckoAdapter/YahooFinanceAdapter, swappable via ADAPTERS hash
+- **Staggered price job enqueueing** - 2s delays between CoinGecko API calls to respect 30 calls/min rate limit
+- **OHLC endpoint for CoinGecko** - /coins/{id}/ohlc provides full OHLC data needed for chart rendering
 - **Flat + nested API routes** - Both /api/v1/calls?influencer_id=X and /api/v1/influencers/:id/calls for flexibility
 - **No pagination for small datasets** - Assets (fixed ~15) and price_snapshots (bounded by date range) skip pagination
 
@@ -84,6 +87,7 @@ None yet.
 - YOUTUBE_API_KEY must be set in production for YouTube sync to work
 - TWITTER_API_KEY must be set in production for Twitter sync to work
 - OPENAI_API_KEY must be set in production for call extraction to work
+- COINGECKO_API_KEY must be set in production for crypto price data to work
 
 **Research-flagged areas for Phase 4:**
 - TradingView Lightweight Charts datafeed interface (specific API contract)
