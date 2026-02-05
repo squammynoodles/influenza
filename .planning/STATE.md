@@ -10,11 +10,11 @@ See: .planning/PROJECT.md (updated 2026-02-05)
 ## Current Position
 
 Phase: 3 of 4 (Call Extraction & Price Data)
-Plan: 1 of 4 complete (03-01 done)
+Plan: 2 of 4 complete (03-01, 03-02 done)
 Status: In progress
-Last activity: 2026-02-06 - Completed 03-01-PLAN.md (Data Models & Seeds)
+Last activity: 2026-02-06 - Completed 03-02-PLAN.md (Call Extraction Pipeline)
 
-Progress: [█████████░] 75% (9/12 plans)
+Progress: [████████░░] 83% (10/12 plans)
 
 ## Production URLs
 
@@ -26,9 +26,9 @@ Progress: [█████████░] 75% (9/12 plans)
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 9
-- Average duration: ~9 min
-- Total execution time: ~80 min
+- Total plans completed: 10
+- Average duration: ~8 min
+- Total execution time: ~82 min
 
 **By Phase:**
 
@@ -36,11 +36,11 @@ Progress: [█████████░] 75% (9/12 plans)
 |-------|-------|-------|----------|
 | 1 | 3 | ~60 min | ~20 min |
 | 2 | 5 | ~18 min | ~3.6 min |
-| 3 | 1 | ~2 min | ~2 min |
+| 3 | 2 | ~4 min | ~2 min |
 
 **Recent Trend:**
-- Last 5 plans: 02-03 (2m), 02-04 (2m), 02-02 (5m), 02-05 (4m), 03-01 (2m)
-- Trend: Data model and seed plans execute very quickly
+- Last 5 plans: 02-04 (2m), 02-02 (5m), 02-05 (4m), 03-01 (2m), 03-02 (2m)
+- Trend: Service and job plans execute quickly when models are already in place
 
 *Updated after each plan completion*
 
@@ -68,6 +68,9 @@ Recent decisions affecting current work:
 - **Decimal(20,8) for prices** - Handles crypto micro-prices and large macro values
 - **Confidence as decimal(5,4)** - 0.0000-1.0000 range with 4 decimal precision
 - **extraction_status defaults pending** - All existing/new content auto-queued for extraction
+- **GPT-4o-mini for extraction** - Cost-effective at $0.15/1M input tokens, sufficient for call extraction
+- **Confidence >= 0.7 threshold** - Only persist high-confidence calls; 0.5-0.7 marked low_confidence
+- **Extraction at :15 past hour** - Staggered after YouTube (:00) and Twitter (:30) ingestion
 
 ### Pending Todos
 
@@ -75,14 +78,10 @@ None yet.
 
 ### Blockers/Concerns
 
-**Phase 2 Production Requirements:**
+**Phase 2-3 Production Requirements:**
 - YOUTUBE_API_KEY must be set in production for YouTube sync to work
 - TWITTER_API_KEY must be set in production for Twitter sync to work
-
-**Research-flagged areas for Phase 3:**
-- NLP prompt engineering for financial call extraction (domain-specific tuning needed)
-- False positive rate mitigation (research indicates 40-60% without validation)
-- Confidence score calibration (threshold tuning required)
+- OPENAI_API_KEY must be set in production for call extraction to work
 
 **Research-flagged areas for Phase 4:**
 - TradingView Lightweight Charts datafeed interface (specific API contract)
@@ -91,7 +90,7 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-06
-Stopped at: Completed 03-01-PLAN.md (Data Models & Seeds)
+Stopped at: Completed 03-02-PLAN.md (Call Extraction Pipeline)
 Resume file: None
 
 ---
