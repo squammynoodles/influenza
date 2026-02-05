@@ -9,6 +9,10 @@ Rails.application.routes.draw do
           get :verify
         end
       end
+      resources :influencers do
+        resources :youtube_channels, only: [:create, :destroy]
+        resources :twitter_accounts, only: [:create, :destroy]
+      end
     end
   end
 
