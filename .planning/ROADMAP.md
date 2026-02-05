@@ -29,10 +29,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. User can reset password via email link
   4. Admin can invite users to platform (invite-only access)
   5. Rails API and Next.js frontend are deployed and accessible
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 01-01: TBD during plan-phase
+- [ ] 01-01-PLAN.md — Rails API backend with authentication models and controllers
+- [ ] 01-02-PLAN.md — Next.js frontend with auth pages and session management
+- [ ] 01-03-PLAN.md — Railway deployment with PostgreSQL and Redis
 
 ### Phase 2: Influencer & Content Pipeline
 **Goal**: Admin can manage influencers and system automatically ingests content from YouTube and Twitter
@@ -94,7 +96,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Authentication | 0/TBD | Not started | - |
+| 1. Foundation & Authentication | 0/3 | Planned | - |
 | 2. Influencer & Content Pipeline | 0/TBD | Not started | - |
 | 3. Call Extraction & Price Data | 0/TBD | Not started | - |
 | 4. Chart Visualization | 0/TBD | Not started | - |
