@@ -32,7 +32,7 @@ module Api
 
       def youtube_channel_params
         params.require(:youtube_channel).permit(
-          :channel_id, :title, :description, :thumbnail_url, :uploads_playlist_id
+          :channel_id, :title, :description, :thumbnail_url
         )
       end
 
@@ -44,7 +44,6 @@ module Api
           title: channel.title,
           description: channel.description,
           thumbnail_url: channel.thumbnail_url,
-          uploads_playlist_id: channel.uploads_playlist_id,
           last_synced_at: channel.last_synced_at,
           created_at: channel.created_at,
           updated_at: channel.updated_at

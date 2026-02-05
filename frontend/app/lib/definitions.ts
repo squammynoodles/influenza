@@ -38,7 +38,6 @@ export interface YoutubeChannel {
   title: string | null
   description: string | null
   thumbnail_url: string | null
-  uploads_playlist_id: string | null
   last_synced_at: string | null
 }
 

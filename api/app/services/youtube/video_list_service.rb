@@ -1,50 +1,38 @@
 # frozen_string_literal: true
 
-require "google/apis/youtube_v3"
+require "open3"
 
 module Youtube
   class VideoListService
-    def initialize
-      @service = Google::Apis::YoutubeV3::YouTubeService.new
-      @service.key = api_key
-    end
+    class FetchError < StandardError; end
 
-    def recent_videos(playlist_id, published_after: 1.day.ago)
-      items = []
-      page_token = nil
+    def recent_videos(channel_id, published_after: 1.day.ago)
+      cmd = [
+        "yt-dlp",
+        "--flat-playlist",
+        "--dump-json",
+        "https://www.youtube.com/channel/#{channel_id}/videos"
+      ]
 
-      loop do
-        response = @service.list_playlist_items(
-          "snippet,contentDetails",
-          playlist_id: playlist_id,
-          max_results: 50,
-          page_token: page_token
-        )
+      stdout, stderr, status = Open3.capture3(*cmd)
 
-        response.items.each do |item|
-          published_at = Time.parse(item.content_details.video_published_at)
-          break if published_at < published_after
-
-          items << {
-            video_id: item.content_details.video_id,
-            title: item.snippet.title,
-            description: item.snippet.description,
-            published_at: published_at,
-            thumbnail_url: item.snippet.thumbnails&.medium&.url
-          }
-        end
-
-        page_token = response.next_page_token
-        break unless page_token
+      unless status.success?
+        raise FetchError, "yt-dlp failed for channel #{channel_id}: #{stderr.strip}"
       end
 
-      items
-    end
+      stdout.each_line.filter_map do |line|
+        data = JSON.parse(line)
+        published_at = data["timestamp"] ? Time.at(data["timestamp"]).utc : nil
+        next if published_at && published_at < published_after
 
-    private
-
-    def api_key
-      ENV["YOUTUBE_API_KEY"] || Rails.application.credentials.youtube_api_key
+        {
+          video_id: data["id"],
+          title: data["title"],
+          description: data["description"],
+          published_at: published_at,
+          thumbnail_url: data["thumbnail"]
+        }
+      end
     end
   end
 end

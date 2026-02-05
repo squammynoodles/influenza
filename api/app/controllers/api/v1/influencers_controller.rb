@@ -66,7 +66,6 @@ module Api
               title: channel.title,
               description: channel.description,
               thumbnail_url: channel.thumbnail_url,
-              uploads_playlist_id: channel.uploads_playlist_id,
               last_synced_at: channel.last_synced_at
             }
           end

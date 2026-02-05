@@ -19,7 +19,6 @@ const InfluencerSchema = z.object({
 
 const YoutubeChannelSchema = z.object({
   channel_id: z.string().min(1, 'Channel ID is required'),
-  uploads_playlist_id: z.string().optional().or(z.literal('')),
 })
 
 const TwitterAccountSchema = z.object({
@@ -133,7 +132,6 @@ export async function linkYoutubeChannel(
 
   const parsed = YoutubeChannelSchema.safeParse({
     channel_id: formData.get('channel_id'),
-    uploads_playlist_id: formData.get('uploads_playlist_id') || undefined,
   })
 
   if (!parsed.success) {
@@ -143,7 +141,6 @@ export async function linkYoutubeChannel(
   try {
     const data = {
       channel_id: parsed.data.channel_id,
-      uploads_playlist_id: parsed.data.uploads_playlist_id || undefined,
     }
     await api.linkYoutubeChannel(auth.token!, influencerId, data)
     revalidatePath(`/influencers/${influencerId}`)

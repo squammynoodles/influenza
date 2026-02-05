@@ -103,7 +103,7 @@ export async function deleteInfluencer(token: string, id: number): Promise<void>
 export async function linkYoutubeChannel(
   token: string,
   influencerId: number,
-  data: { channel_id: string; uploads_playlist_id?: string }
+  data: { channel_id: string }
 ): Promise<YoutubeChannel> {
   const res = await fetch(`${API_URL}/api/v1/influencers/${influencerId}/youtube_channels`, {
     method: 'POST',

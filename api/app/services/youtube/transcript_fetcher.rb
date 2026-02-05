@@ -1,88 +1,69 @@
 # frozen_string_literal: true
 
-require "httparty"
-require "nokogiri"
-require "cgi"
+require "open3"
+require "tmpdir"
 
 module Youtube
   class TranscriptFetcher
-    WATCH_URL = "https://www.youtube.com/watch?v=%s"
-
     class TranscriptNotAvailable < StandardError; end
 
     def fetch(video_id)
-      # Step 1: Get video page to extract transcript params
-      page_html = HTTParty.get(WATCH_URL % video_id, timeout: 10).body
+      Dir.mktmpdir do |dir|
+        cmd = [
+          "yt-dlp",
+          "--skip-download",
+          "--write-auto-sub",
+          "--write-sub",
+          "--sub-lang", "en",
+          "--sub-format", "vtt",
+          "--output", "#{dir}/%(id)s",
+          "https://www.youtube.com/watch?v=#{video_id}"
+        ]
 
-      # Step 2: Extract captions data from page
-      captions_json = extract_captions_json(page_html)
-      raise TranscriptNotAvailable, "No captions found for video #{video_id}" unless captions_json
+        _stdout, stderr, status = Open3.capture3(*cmd)
 
-      # Step 3: Find English transcript URL
-      caption_track = find_english_track(captions_json)
-      raise TranscriptNotAvailable, "No English captions for video #{video_id}" unless caption_track
+        unless status.success?
+          raise TranscriptNotAvailable, "yt-dlp subtitle extraction failed for #{video_id}: #{stderr.strip}"
+        end
 
-      # Step 4: Fetch and parse transcript XML
-      transcript_xml = HTTParty.get(caption_track["baseUrl"], timeout: 10).body
-      parse_transcript_xml(transcript_xml)
-    rescue HTTParty::Error, Timeout::Error => e
-      raise TranscriptNotAvailable, "Network error fetching transcript: #{e.message}"
+        sub_file = Dir.glob("#{dir}/*.vtt").first
+        raise TranscriptNotAvailable, "No subtitles found for video #{video_id}" unless sub_file
+
+        parse_vtt(File.read(sub_file))
+      end
     end
 
     private
 
-    def extract_captions_json(html)
-      # Look for playerCaptionsTracklistRenderer in page data
-      # The captions JSON is embedded in the initial player response
-      match = html.match(/"captions":\s*(\{"playerCaptionsTracklistRenderer"[^}]+\})\s*,\s*"videoDetails"/)
+    def parse_vtt(vtt_content)
+      lines = vtt_content.lines.map(&:strip)
 
-      if match
-        begin
-          json_str = match[1]
-          # Fix JSON by ensuring it's properly closed
-          json_str = balance_braces(json_str)
-          parsed = JSON.parse(json_str)
-          return parsed["playerCaptionsTracklistRenderer"]
-        rescue JSON::ParserError
-          # Try alternative extraction
+      # Skip header (WEBVTT and any metadata lines before first blank line)
+      in_header = true
+      text_lines = []
+
+      lines.each do |line|
+        if in_header
+          in_header = false if line.empty?
+          next
         end
+
+        # Skip timestamp lines (e.g., "00:00:01.000 --> 00:00:04.000")
+        next if line.match?(/\A\d{2}:\d{2}:\d{2}\.\d{3}\s*-->/)
+        # Skip cue index lines (numeric only)
+        next if line.match?(/\A\d+\z/)
+        # Skip empty lines
+        next if line.empty?
+
+        # Strip VTT formatting tags like <c>, </c>, <00:00:01.234>, etc.
+        clean = line.gsub(/<[^>]+>/, "")
+        text_lines << clean unless clean.empty?
       end
 
-      # Alternative: look for captionTracks directly
-      tracks_match = html.match(/"captionTracks":\s*(\[[^\]]+\])/)
-      if tracks_match
-        begin
-          tracks = JSON.parse(tracks_match[1])
-          return { "captionTracks" => tracks }
-        rescue JSON::ParserError
-          nil
-        end
-      end
+      # Deduplicate consecutive identical lines (common in auto-generated subs)
+      deduped = text_lines.chunk_while { |a, b| a == b }.map(&:first)
 
-      nil
-    end
-
-    def balance_braces(str)
-      # Simple brace balancing for truncated JSON
-      open_count = str.count("{") - str.count("}")
-      str + ("}" * [ open_count, 0 ].max)
-    end
-
-    def find_english_track(captions)
-      tracks = captions["captionTracks"] || []
-      tracks.find { |t| t["languageCode"] == "en" } ||
-        tracks.find { |t| t["languageCode"]&.start_with?("en") } ||
-        tracks.first  # Fallback to any available
-    end
-
-    def parse_transcript_xml(xml)
-      doc = Nokogiri::XML(xml)
-      segments = doc.css("text").map do |node|
-        CGI.unescapeHTML(node.text.to_s)
-      end
-
-      # Join into full transcript text
-      segments.join(" ").gsub(/\s+/, " ").strip
+      deduped.join(" ").gsub(/\s+/, " ").strip
     end
   end
 end

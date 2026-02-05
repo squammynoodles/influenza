@@ -9,10 +9,8 @@ module Youtube
     end
 
     def call
-      return unless @channel.uploads_playlist_id.present?
-
       videos = @video_service.recent_videos(
-        @channel.uploads_playlist_id,
+        @channel.channel_id,
         published_after: last_sync_time
       )
 
