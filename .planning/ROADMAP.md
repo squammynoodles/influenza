@@ -70,10 +70,13 @@ Plans:
   5. System fetches historical price data for crypto assets via CoinGecko
   6. System fetches historical price data for macro assets via Yahoo Finance
   7. Price data adapters are swappable without code changes
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 03-01: TBD during plan-phase
+- [ ] 03-01-PLAN.md — Data models (Asset, Call, PriceSnapshot) and asset seed data
+- [ ] 03-02-PLAN.md — LLM call extraction pipeline (ruby-openai, services, jobs)
+- [ ] 03-03-PLAN.md — Price data adapters (CoinGecko, Yahoo Finance) and fetch jobs
+- [ ] 03-04-PLAN.md — API endpoints for calls, assets, and price snapshots
 
 ### Phase 4: Chart Visualization
 **Goal**: Users see interactive price charts with influencer call overlays, completing the core value proposition
@@ -102,7 +105,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Foundation & Authentication | 3/3 | ✓ Complete | 2026-02-05 |
 | 2. Influencer & Content Pipeline | 5/5 | ✓ Complete | 2026-02-06 |
-| 3. Call Extraction & Price Data | 0/TBD | Not started | - |
+| 3. Call Extraction & Price Data | 0/4 | In Progress | - |
 | 4. Chart Visualization | 0/TBD | Not started | - |
 
 ---
