@@ -79,15 +79,15 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-None yet.
+1 pending todo:
+- **Replace YouTube Data API with yt-dlp** (api) — eliminate YOUTUBE_API_KEY dependency
 
 ### Blockers/Concerns
 
 **Phase 2-3 Production Requirements:**
-- YOUTUBE_API_KEY must be set in production for YouTube sync to work
+- OPENAI_API_KEY must be set in production for call extraction to work ✓ Set
+- COINGECKO_API_KEY must be set in production for crypto price data to work ✓ Set
 - TWITTER_API_KEY must be set in production for Twitter sync to work
-- OPENAI_API_KEY must be set in production for call extraction to work
-- COINGECKO_API_KEY must be set in production for crypto price data to work
 
 **Research-flagged areas for Phase 4:**
 - TradingView Lightweight Charts datafeed interface (specific API contract)
