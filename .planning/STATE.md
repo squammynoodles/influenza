@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-02-05)
 ## Current Position
 
 Phase: 1 of 4 (Foundation & Authentication)
-Plan: 1 of 3 complete
+Plan: 2 of 3 complete
 Status: In progress
-Last activity: 2026-02-05 - Completed 01-01-PLAN.md (Rails API with authentication)
+Last activity: 2026-02-05 - Completed 01-02-PLAN.md (Next.js frontend authentication)
 
-Progress: [█░░░░░░░░░] 10%
+Progress: [██░░░░░░░░] 20%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
-- Average duration: 10 min
-- Total execution time: 0.17 hours
+- Total plans completed: 2
+- Average duration: 7.5 min
+- Total execution time: 0.25 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-foundation-authentication | 1/3 | 10min | 10min |
+| 01-foundation-authentication | 2/3 | 15min | 7.5min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (10min)
-- Trend: Not established (need more data)
+- Last 5 plans: 01-01 (10min), 01-02 (5min)
+- Trend: Improving (faster execution)
 
 *Updated after each plan completion*
 
@@ -52,6 +52,13 @@ Recent decisions affecting current work:
 - Use has_secure_token for session tokens (auto-generated, indexed)
 - Store sessions in database (enables logout everywhere, session management)
 - API versioning via /api/v1 namespace (future-proofs API changes)
+
+**01-02 Decisions:**
+- Use jose library for JWT encryption of session data in httpOnly cookie
+- Store API token inside encrypted JWT (double-layer: API token -> JWT -> httpOnly cookie)
+- Use React cache() for DAL functions (verifySession, getUser) to deduplicate per-request
+- Route group (auth) for auth pages with centered layout
+- Middleware handles redirect logic, not individual pages
 
 ### Pending Todos
 
@@ -74,8 +81,8 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-05 17:19
-Stopped at: Completed 01-01-PLAN.md, ready for 01-02-PLAN.md (Next.js frontend)
+Last session: 2026-02-05 17:25
+Stopped at: Completed 01-02-PLAN.md, ready for 01-03-PLAN.md (deployment configuration)
 Resume file: None
 
 ---
