@@ -1,4 +1,5 @@
 import { cookies } from 'next/headers'
+import type { Influencer, YoutubeChannel, TwitterAccount } from './definitions'
 
 const API_URL = process.env.API_URL || 'http://localhost:3000'
 
@@ -30,4 +31,142 @@ export async function apiRequest<T>(
   } catch (error) {
     return { error: 'Network error', status: 0 }
   }
+}
+
+// Influencer API functions
+export async function getInfluencers(token: string): Promise<Influencer[]> {
+  const res = await fetch(`${API_URL}/api/v1/influencers`, {
+    headers: { Authorization: `Bearer ${token}` },
+    cache: 'no-store',
+  })
+  if (!res.ok) throw new Error('Failed to fetch influencers')
+  return res.json()
+}
+
+export async function getInfluencer(token: string, id: number): Promise<Influencer> {
+  const res = await fetch(`${API_URL}/api/v1/influencers/${id}`, {
+    headers: { Authorization: `Bearer ${token}` },
+    cache: 'no-store',
+  })
+  if (!res.ok) throw new Error('Failed to fetch influencer')
+  return res.json()
+}
+
+export async function createInfluencer(
+  token: string,
+  data: { name: string; avatar_url?: string; bio?: string }
+): Promise<Influencer> {
+  const res = await fetch(`${API_URL}/api/v1/influencers`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ influencer: data }),
+  })
+  if (!res.ok) {
+    const error = await res.json()
+    throw new Error(error.errors?.join(', ') || 'Failed to create influencer')
+  }
+  return res.json()
+}
+
+export async function updateInfluencer(
+  token: string,
+  id: number,
+  data: { name?: string; avatar_url?: string; bio?: string }
+): Promise<Influencer> {
+  const res = await fetch(`${API_URL}/api/v1/influencers/${id}`, {
+    method: 'PATCH',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ influencer: data }),
+  })
+  if (!res.ok) {
+    const error = await res.json()
+    throw new Error(error.errors?.join(', ') || 'Failed to update influencer')
+  }
+  return res.json()
+}
+
+export async function deleteInfluencer(token: string, id: number): Promise<void> {
+  const res = await fetch(`${API_URL}/api/v1/influencers/${id}`, {
+    method: 'DELETE',
+    headers: { Authorization: `Bearer ${token}` },
+  })
+  if (!res.ok) throw new Error('Failed to delete influencer')
+}
+
+// YouTube Channel API functions
+export async function linkYoutubeChannel(
+  token: string,
+  influencerId: number,
+  data: { channel_id: string; uploads_playlist_id?: string }
+): Promise<YoutubeChannel> {
+  const res = await fetch(`${API_URL}/api/v1/influencers/${influencerId}/youtube_channels`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ youtube_channel: data }),
+  })
+  if (!res.ok) {
+    const error = await res.json()
+    throw new Error(error.errors?.join(', ') || 'Failed to link YouTube channel')
+  }
+  return res.json()
+}
+
+export async function unlinkYoutubeChannel(
+  token: string,
+  influencerId: number,
+  channelId: number
+): Promise<void> {
+  const res = await fetch(
+    `${API_URL}/api/v1/influencers/${influencerId}/youtube_channels/${channelId}`,
+    {
+      method: 'DELETE',
+      headers: { Authorization: `Bearer ${token}` },
+    }
+  )
+  if (!res.ok) throw new Error('Failed to unlink YouTube channel')
+}
+
+// Twitter Account API functions
+export async function linkTwitterAccount(
+  token: string,
+  influencerId: number,
+  data: { username: string }
+): Promise<TwitterAccount> {
+  const res = await fetch(`${API_URL}/api/v1/influencers/${influencerId}/twitter_accounts`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ twitter_account: data }),
+  })
+  if (!res.ok) {
+    const error = await res.json()
+    throw new Error(error.errors?.join(', ') || 'Failed to link Twitter account')
+  }
+  return res.json()
+}
+
+export async function unlinkTwitterAccount(
+  token: string,
+  influencerId: number,
+  accountId: number
+): Promise<void> {
+  const res = await fetch(
+    `${API_URL}/api/v1/influencers/${influencerId}/twitter_accounts/${accountId}`,
+    {
+      method: 'DELETE',
+      headers: { Authorization: `Bearer ${token}` },
+    }
+  )
+  if (!res.ok) throw new Error('Failed to unlink Twitter account')
 }
