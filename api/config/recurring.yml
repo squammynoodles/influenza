@@ -46,3 +46,7 @@ development:
   extract_all_pending_calls:
     class: ExtractAllPendingCallsJob
     schedule: every 10 minutes
+
+  fetch_all_prices:
+    class: FetchAllPricesJob
+    schedule: every hour
