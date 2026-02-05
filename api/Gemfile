@@ -52,3 +52,5 @@ end
 gem "rack-cors", "~> 3.0"
 
 gem "bcrypt", "~> 3.1"
+
+gem "google-apis-youtube_v3", "~> 0.61.0"
