@@ -3,6 +3,12 @@
 # If running the rails server then create or migrate existing database
 if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
   ./bin/rails db:prepare
+
+  # Seed database if RUN_SEED is set (for initial deployment)
+  if [ "${RUN_SEED}" == "true" ]; then
+    echo "Seeding database..."
+    ./bin/rails db:seed
+  fi
 fi
 
 exec "${@}"
