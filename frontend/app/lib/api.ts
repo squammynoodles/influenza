@@ -170,3 +170,45 @@ export async function unlinkTwitterAccount(
   )
   if (!res.ok) throw new Error('Failed to unlink Twitter account')
 }
+
+// Content API functions
+export interface ContentFilters {
+  type?: 'youtube_video' | 'tweet'
+  page?: number
+  per_page?: number
+}
+
+export async function getInfluencerContents(
+  token: string,
+  influencerId: number,
+  filters: ContentFilters = {}
+): Promise<import('./definitions').PaginatedContents> {
+  const params = new URLSearchParams()
+  if (filters.type) params.set('type', filters.type)
+  if (filters.page) params.set('page', filters.page.toString())
+  if (filters.per_page) params.set('per_page', filters.per_page.toString())
+
+  const queryString = params.toString()
+  const url = `${API_URL}/api/v1/influencers/${influencerId}/contents${queryString ? `?${queryString}` : ''}`
+
+  const res = await fetch(url, {
+    headers: { Authorization: `Bearer ${token}` },
+    cache: 'no-store',
+  })
+
+  if (!res.ok) throw new Error('Failed to fetch contents')
+  return res.json()
+}
+
+// Content URL helpers
+export function getYoutubeThumbnail(videoId: string): string {
+  return `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`
+}
+
+export function getYoutubeUrl(videoId: string): string {
+  return `https://www.youtube.com/watch?v=${videoId}`
+}
+
+export function getTweetUrl(username: string, tweetId: string): string {
+  return `https://twitter.com/${username}/status/${tweetId}`
+}
