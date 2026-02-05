@@ -1,5 +1,6 @@
 class Content < ApplicationRecord
   belongs_to :influencer
+  has_many :calls, dependent: :destroy
 
   validates :external_id, presence: true, uniqueness: { scope: :type }
   validates :type, presence: true
