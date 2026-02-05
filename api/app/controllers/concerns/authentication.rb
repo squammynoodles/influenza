@@ -2,6 +2,8 @@ module Authentication
   extend ActiveSupport::Concern
 
   included do
+    include ActionController::HttpAuthentication::Token::ControllerMethods
+
     before_action :require_authentication
     helper_method :authenticated? if respond_to?(:helper_method)
   end
