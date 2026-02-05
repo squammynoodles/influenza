@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-02-05)
 
 **Core value:** Users can visually see when an influencer made a call and what the price did after
-**Current focus:** Phase 2 Complete - Ready for Phase 3 (Call Extraction)
+**Current focus:** Phase 3 In Progress - Call Extraction & Price Data
 
 ## Current Position
 
-Phase: 2 of 4 (Influencer & Content Pipeline) - COMPLETE
-Plan: 5 of 5 complete (02-01, 02-02, 02-03, 02-04, 02-05 done)
-Status: Phase 2 complete, ready for Phase 3
-Last activity: 2026-02-06 - Completed 02-05-PLAN.md (Content History Frontend)
+Phase: 3 of 4 (Call Extraction & Price Data)
+Plan: 1 of 4 complete (03-01 done)
+Status: In progress
+Last activity: 2026-02-06 - Completed 03-01-PLAN.md (Data Models & Seeds)
 
-Progress: [████████░░] 80%
+Progress: [█████████░] 75% (9/12 plans)
 
 ## Production URLs
 
@@ -26,9 +26,9 @@ Progress: [████████░░] 80%
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 8
-- Average duration: ~10 min
-- Total execution time: ~78 min
+- Total plans completed: 9
+- Average duration: ~9 min
+- Total execution time: ~80 min
 
 **By Phase:**
 
@@ -36,10 +36,11 @@ Progress: [████████░░] 80%
 |-------|-------|-------|----------|
 | 1 | 3 | ~60 min | ~20 min |
 | 2 | 5 | ~18 min | ~3.6 min |
+| 3 | 1 | ~2 min | ~2 min |
 
 **Recent Trend:**
-- Last 5 plans: 02-01 (5m), 02-03 (2m), 02-04 (2m), 02-02 (5m), 02-05 (4m)
-- Trend: Frontend and data model plans execute quickly
+- Last 5 plans: 02-03 (2m), 02-04 (2m), 02-02 (5m), 02-05 (4m), 03-01 (2m)
+- Trend: Data model and seed plans execute very quickly
 
 *Updated after each plan completion*
 
@@ -64,6 +65,9 @@ Recent decisions affecting current work:
 - **Dashboard route group** - All authenticated pages under (dashboard) for shared layout
 - **Server Actions for forms** - useActionState with Zod validation for all CRUD operations
 - **URL-based content filtering** - Shareable/bookmarkable filter states via searchParams
+- **Decimal(20,8) for prices** - Handles crypto micro-prices and large macro values
+- **Confidence as decimal(5,4)** - 0.0000-1.0000 range with 4 decimal precision
+- **extraction_status defaults pending** - All existing/new content auto-queued for extraction
 
 ### Pending Todos
 
@@ -87,7 +91,7 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-06
-Stopped at: Completed 02-05-PLAN.md (Phase 2 complete)
+Stopped at: Completed 03-01-PLAN.md (Data Models & Seeds)
 Resume file: None
 
 ---
