@@ -10,11 +10,11 @@ See: .planning/PROJECT.md (updated 2026-02-05)
 ## Current Position
 
 Phase: 2 of 4 (Influencer & Content Pipeline)
-Plan: 2 of 5 complete (02-01, 02-03 done; 02-02, 02-04, 02-05 remaining)
+Plan: 3 of 5 complete (02-01, 02-03, 02-04 done; 02-02, 02-05 remaining)
 Status: In progress
-Last activity: 2026-02-05 - Completed 02-03-PLAN.md (YouTube Ingestion Service)
+Last activity: 2026-02-05 - Completed 02-04-PLAN.md (Twitter Ingestion Service)
 
-Progress: [████░░░░░░] 40%
+Progress: [█████░░░░░] 50%
 
 ## Production URLs
 
@@ -26,19 +26,19 @@ Progress: [████░░░░░░] 40%
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
-- Average duration: ~13 min
-- Total execution time: ~67 min
+- Total plans completed: 6
+- Average duration: ~12 min
+- Total execution time: ~69 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1 | 3 | ~60 min | ~20 min |
-| 2 | 2 | ~7 min | ~3.5 min |
+| 2 | 3 | ~9 min | ~3 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (10m), 01-02 (5m), 01-03 (45m), 02-01 (5m), 02-03 (2m)
+- Last 5 plans: 01-02 (5m), 01-03 (45m), 02-01 (5m), 02-03 (2m), 02-04 (2m)
 - Trend: Data model and integration plans execute quickly
 
 *Updated after each plan completion*
@@ -58,6 +58,9 @@ Recent decisions affecting current work:
 - **Avatar as URL** - Store avatar_url string instead of ActiveStorage, avatars hosted externally
 - **Innertube for transcripts** - Scrape YouTube pages for captions (0 API quota vs paid API)
 - **HTTParty for HTTP requests** - Added for transcript fetching, simpler than Net::HTTP
+- **TwitterAPI.io for tweets** - Third-party API ($1 free credit), official Twitter API is $200+/month
+- **Filter retweets** - Only store original tweets for call extraction, not reposted content
+- **Staggered scheduling** - YouTube at :00, Twitter at :30 for easier debugging
 
 ### Pending Todos
 
@@ -69,6 +72,7 @@ None yet.
 - YouTube API quota optimization needs testing (10K units/day with 5-10 influencers)
 - Batch processing frequency (research suggests 15-30 min, requirements specify hourly)
 - **NEW:** YOUTUBE_API_KEY must be set in production for YouTube sync to work
+- **NEW:** TWITTER_API_KEY must be set in production for Twitter sync to work
 
 **Research-flagged areas for Phase 3:**
 - NLP prompt engineering for financial call extraction (domain-specific tuning needed)
@@ -82,7 +86,7 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-05
-Stopped at: Completed 02-03-PLAN.md
+Stopped at: Completed 02-04-PLAN.md
 Resume file: None
 
 ---
