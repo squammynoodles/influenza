@@ -79,8 +79,7 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-1 pending todo:
-- **Replace YouTube Data API with yt-dlp** (api) — eliminate YOUTUBE_API_KEY dependency
+None — 1 todo in progress.
 
 ### Blockers/Concerns
 
