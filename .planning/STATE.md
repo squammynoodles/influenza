@@ -5,33 +5,40 @@
 See: .planning/PROJECT.md (updated 2026-02-05)
 
 **Core value:** Users can visually see when an influencer made a call and what the price did after
-**Current focus:** Phase 1 - Foundation & Authentication
+**Current focus:** Phase 2 - Influencer & Content Pipeline
 
 ## Current Position
 
-Phase: 1 of 4 (Foundation & Authentication)
-Plan: 2 of 3 complete
-Status: In progress
-Last activity: 2026-02-05 - Completed 01-02-PLAN.md (Next.js frontend authentication)
+Phase: 2 of 4 (Influencer & Content Pipeline)
+Plan: Ready to plan
+Status: Ready for /gsd:plan-phase 2
+Last activity: 2026-02-05 — Phase 1 complete, deployed to Railway
 
-Progress: [██░░░░░░░░] 20%
+Progress: [██░░░░░░░░] 25%
+
+## Production URLs
+
+| Service | URL |
+|---------|-----|
+| API | https://api-production-b1ab.up.railway.app |
+| Frontend | https://frontend-production-9ba4.up.railway.app |
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2
-- Average duration: 7.5 min
-- Total execution time: 0.25 hours
+- Total plans completed: 3
+- Average duration: ~20 min
+- Total execution time: ~1 hour
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-foundation-authentication | 2/3 | 15min | 7.5min |
+| 1 | 3 | ~60 min | ~20 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (10min), 01-02 (5min)
-- Trend: Improving (faster execution)
+- Last 3 plans: 01-01 (10m), 01-02 (5m), 01-03 (45m)
+- Trend: Deployment plans take longer (manual steps)
 
 *Updated after each plan completion*
 
@@ -42,23 +49,10 @@ Progress: [██░░░░░░░░] 20%
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
 
-- Roadmap structure: 4 phases derived from requirements, compressed for "quick" depth setting
-- Phase 1 focuses on authentication and deployment foundation before content ingestion
-- Phase 2 combines influencer management and content pipeline (both needed for ingestion)
-- Phase 3 combines call extraction and price data (can be developed in parallel within phase)
-
-**01-01 Decisions:**
-- Use Rails 8 generates_token_for for password reset and invitation tokens (built-in, secure)
-- Use has_secure_token for session tokens (auto-generated, indexed)
-- Store sessions in database (enables logout everywhere, session management)
-- API versioning via /api/v1 namespace (future-proofs API changes)
-
-**01-02 Decisions:**
-- Use jose library for JWT encryption of session data in httpOnly cookie
-- Store API token inside encrypted JWT (double-layer: API token -> JWT -> httpOnly cookie)
-- Use React cache() for DAL functions (verifySession, getUser) to deduplicate per-request
-- Route group (auth) for auth pages with centered layout
-- Middleware handles redirect logic, not individual pages
+- **Railway for deployment** - Simple PaaS, auto-detects Dockerfile and Next.js
+- **No Redis needed** - Rails 8 Solid Queue uses PostgreSQL for background jobs
+- **Public DATABASE_URL** - Railway internal DNS had issues, using public endpoint
+- **Monorepo watch paths** - Configure in Railway to avoid rebuilding both services
 
 ### Pending Todos
 
@@ -81,8 +75,8 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-05 17:25
-Stopped at: Completed 01-02-PLAN.md, ready for 01-03-PLAN.md (deployment configuration)
+Last session: 2026-02-05
+Stopped at: Phase 1 complete, ready for Phase 2 planning
 Resume file: None
 
 ---
