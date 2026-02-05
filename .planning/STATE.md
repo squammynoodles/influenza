@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-02-05)
 
 **Core value:** Users can visually see when an influencer made a call and what the price did after
-**Current focus:** Phase 3 In Progress - Call Extraction & Price Data
+**Current focus:** Phase 3 Complete - Call Extraction & Price Data
 
 ## Current Position
 
 Phase: 3 of 4 (Call Extraction & Price Data)
-Plan: 2 of 4 complete (03-01, 03-02 done)
-Status: In progress
-Last activity: 2026-02-06 - Completed 03-02-PLAN.md (Call Extraction Pipeline)
+Plan: 4 of 4 complete (03-01, 03-02, 03-03, 03-04 done)
+Status: Phase complete
+Last activity: 2026-02-06 - Completed 03-04-PLAN.md (API Endpoints)
 
-Progress: [████████░░] 83% (10/12 plans)
+Progress: [████████████] 100% (12/12 plans)
 
 ## Production URLs
 
@@ -26,9 +26,9 @@ Progress: [████████░░] 83% (10/12 plans)
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 10
-- Average duration: ~8 min
-- Total execution time: ~82 min
+- Total plans completed: 12
+- Average duration: ~7 min
+- Total execution time: ~86 min
 
 **By Phase:**
 
@@ -36,11 +36,11 @@ Progress: [████████░░] 83% (10/12 plans)
 |-------|-------|-------|----------|
 | 1 | 3 | ~60 min | ~20 min |
 | 2 | 5 | ~18 min | ~3.6 min |
-| 3 | 2 | ~4 min | ~2 min |
+| 3 | 4 | ~8 min | ~2 min |
 
 **Recent Trend:**
-- Last 5 plans: 02-04 (2m), 02-02 (5m), 02-05 (4m), 03-01 (2m), 03-02 (2m)
-- Trend: Service and job plans execute quickly when models are already in place
+- Last 5 plans: 02-05 (4m), 03-01 (2m), 03-02 (2m), 03-03 (2m), 03-04 (2m)
+- Trend: API controller plans execute very quickly with established patterns
 
 *Updated after each plan completion*
 
@@ -71,6 +71,8 @@ Recent decisions affecting current work:
 - **GPT-4o-mini for extraction** - Cost-effective at $0.15/1M input tokens, sufficient for call extraction
 - **Confidence >= 0.7 threshold** - Only persist high-confidence calls; 0.5-0.7 marked low_confidence
 - **Extraction at :15 past hour** - Staggered after YouTube (:00) and Twitter (:30) ingestion
+- **Flat + nested API routes** - Both /api/v1/calls?influencer_id=X and /api/v1/influencers/:id/calls for flexibility
+- **No pagination for small datasets** - Assets (fixed ~15) and price_snapshots (bounded by date range) skip pagination
 
 ### Pending Todos
 
@@ -90,7 +92,7 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-06
-Stopped at: Completed 03-02-PLAN.md (Call Extraction Pipeline)
+Stopped at: Completed 03-04-PLAN.md (API Endpoints) - Phase 3 complete
 Resume file: None
 
 ---
