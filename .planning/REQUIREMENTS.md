@@ -99,44 +99,44 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| AUTH-01 | TBD | Pending |
-| AUTH-02 | TBD | Pending |
-| AUTH-03 | TBD | Pending |
-| AUTH-04 | TBD | Pending |
-| INFL-01 | TBD | Pending |
-| INFL-02 | TBD | Pending |
-| INFL-03 | TBD | Pending |
-| INFL-04 | TBD | Pending |
-| INFL-05 | TBD | Pending |
-| INFL-06 | TBD | Pending |
-| CONT-01 | TBD | Pending |
-| CONT-02 | TBD | Pending |
-| CONT-03 | TBD | Pending |
-| CONT-04 | TBD | Pending |
-| CONT-05 | TBD | Pending |
-| CALL-01 | TBD | Pending |
-| CALL-02 | TBD | Pending |
-| CALL-03 | TBD | Pending |
-| CALL-04 | TBD | Pending |
-| CALL-05 | TBD | Pending |
-| CHRT-01 | TBD | Pending |
-| CHRT-02 | TBD | Pending |
-| CHRT-03 | TBD | Pending |
-| CHRT-04 | TBD | Pending |
-| CHRT-05 | TBD | Pending |
-| CHRT-06 | TBD | Pending |
-| CHRT-07 | TBD | Pending |
-| CHRT-08 | TBD | Pending |
-| PRCE-01 | TBD | Pending |
-| PRCE-02 | TBD | Pending |
-| PRCE-03 | TBD | Pending |
-| PRCE-04 | TBD | Pending |
+| AUTH-01 | Phase 1 | Pending |
+| AUTH-02 | Phase 1 | Pending |
+| AUTH-03 | Phase 1 | Pending |
+| AUTH-04 | Phase 1 | Pending |
+| INFL-01 | Phase 2 | Pending |
+| INFL-02 | Phase 2 | Pending |
+| INFL-03 | Phase 2 | Pending |
+| INFL-04 | Phase 2 | Pending |
+| INFL-05 | Phase 2 | Pending |
+| INFL-06 | Phase 2 | Pending |
+| CONT-01 | Phase 2 | Pending |
+| CONT-02 | Phase 2 | Pending |
+| CONT-03 | Phase 2 | Pending |
+| CONT-04 | Phase 2 | Pending |
+| CONT-05 | Phase 2 | Pending |
+| CALL-01 | Phase 3 | Pending |
+| CALL-02 | Phase 3 | Pending |
+| CALL-03 | Phase 3 | Pending |
+| CALL-04 | Phase 3 | Pending |
+| CALL-05 | Phase 3 | Pending |
+| PRCE-01 | Phase 3 | Pending |
+| PRCE-02 | Phase 3 | Pending |
+| PRCE-03 | Phase 3 | Pending |
+| PRCE-04 | Phase 3 | Pending |
+| CHRT-01 | Phase 4 | Pending |
+| CHRT-02 | Phase 4 | Pending |
+| CHRT-03 | Phase 4 | Pending |
+| CHRT-04 | Phase 4 | Pending |
+| CHRT-05 | Phase 4 | Pending |
+| CHRT-06 | Phase 4 | Pending |
+| CHRT-07 | Phase 4 | Pending |
+| CHRT-08 | Phase 4 | Pending |
 
 **Coverage:**
 - v1 requirements: 32 total
-- Mapped to phases: 0
-- Unmapped: 32 ⚠️
+- Mapped to phases: 32
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-02-05*
-*Last updated: 2026-02-05 after initial definition*
+*Last updated: 2026-02-05 after roadmap creation*
