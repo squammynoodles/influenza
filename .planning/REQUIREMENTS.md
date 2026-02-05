@@ -16,20 +16,20 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Influencer Management
 
-- [ ] **INFL-01**: Admin can add new influencers to track
-- [ ] **INFL-02**: Admin can remove influencers from tracking
-- [ ] **INFL-03**: Influencer has profile (name, avatar, bio)
-- [ ] **INFL-04**: Influencer can have linked YouTube channel
-- [ ] **INFL-05**: Influencer can have linked Twitter/X account
-- [ ] **INFL-06**: User can browse list of all tracked influencers
+- [x] **INFL-01**: Admin can add new influencers to track
+- [x] **INFL-02**: Admin can remove influencers from tracking
+- [x] **INFL-03**: Influencer has profile (name, avatar, bio)
+- [x] **INFL-04**: Influencer can have linked YouTube channel
+- [x] **INFL-05**: Influencer can have linked Twitter/X account
+- [x] **INFL-06**: User can browse list of all tracked influencers
 
 ### Content Ingestion
 
-- [ ] **CONT-01**: System pulls videos from linked YouTube channels
-- [ ] **CONT-02**: System extracts transcripts from YouTube videos
-- [ ] **CONT-03**: System pulls tweets from linked Twitter/X accounts
-- [ ] **CONT-04**: Content is processed in hourly batches
-- [ ] **CONT-05**: User can view content history for an influencer
+- [x] **CONT-01**: System pulls videos from linked YouTube channels
+- [x] **CONT-02**: System extracts transcripts from YouTube videos
+- [x] **CONT-03**: System pulls tweets from linked Twitter/X accounts
+- [x] **CONT-04**: Content is processed in hourly batches
+- [x] **CONT-05**: User can view content history for an influencer
 
 ### Call Extraction
 
@@ -103,17 +103,17 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AUTH-02 | Phase 1 | Complete |
 | AUTH-03 | Phase 1 | Complete |
 | AUTH-04 | Phase 1 | Complete |
-| INFL-01 | Phase 2 | Pending |
-| INFL-02 | Phase 2 | Pending |
-| INFL-03 | Phase 2 | Pending |
-| INFL-04 | Phase 2 | Pending |
-| INFL-05 | Phase 2 | Pending |
-| INFL-06 | Phase 2 | Pending |
-| CONT-01 | Phase 2 | Pending |
-| CONT-02 | Phase 2 | Pending |
-| CONT-03 | Phase 2 | Pending |
-| CONT-04 | Phase 2 | Pending |
-| CONT-05 | Phase 2 | Pending |
+| INFL-01 | Phase 2 | Complete |
+| INFL-02 | Phase 2 | Complete |
+| INFL-03 | Phase 2 | Complete |
+| INFL-04 | Phase 2 | Complete |
+| INFL-05 | Phase 2 | Complete |
+| INFL-06 | Phase 2 | Complete |
+| CONT-01 | Phase 2 | Complete |
+| CONT-02 | Phase 2 | Complete |
+| CONT-03 | Phase 2 | Complete |
+| CONT-04 | Phase 2 | Complete |
+| CONT-05 | Phase 2 | Complete |
 | CALL-01 | Phase 3 | Pending |
 | CALL-02 | Phase 3 | Pending |
 | CALL-03 | Phase 3 | Pending |
