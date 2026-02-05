@@ -16,7 +16,10 @@ Rails.application.routes.draw do
         resources :calls, only: [:index]
       end
       resources :calls, only: [:index]
-      resources :assets, only: [:index, :show]
+      resources :assets, only: [:index, :show] do
+        resources :price_snapshots, only: [:index]
+      end
+      resources :price_snapshots, only: [:index]
     end
   end
 
