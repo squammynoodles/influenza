@@ -13,7 +13,10 @@ Rails.application.routes.draw do
         resources :youtube_channels, only: [:create, :destroy]
         resources :twitter_accounts, only: [:create, :destroy]
         resources :contents, only: [:index]
+        resources :calls, only: [:index]
       end
+      resources :calls, only: [:index]
+      resources :assets, only: [:index, :show]
     end
   end
 
