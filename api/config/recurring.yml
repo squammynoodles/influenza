@@ -20,6 +20,16 @@ production:
     schedule: every hour at minute 30
     queue: ingestion
 
+  extract_all_pending_calls:
+    class: ExtractAllPendingCallsJob
+    schedule: every hour at minute 15
+    queue: extraction
+
+  fetch_all_prices:
+    class: FetchAllPricesJob
+    schedule: every day at 6am
+    queue: prices
+
   clear_solid_queue_finished_jobs:
     command: "SolidQueue::Job.clear_finished_in_batches(sleep_between_batches: 0.3)"
     schedule: every hour at minute 12
@@ -31,4 +41,8 @@ development:
 
   sync_twitter_accounts:
     class: SyncTwitterAccountsJob
+    schedule: every 10 minutes
+
+  extract_all_pending_calls:
+    class: ExtractAllPendingCallsJob
     schedule: every 10 minutes
